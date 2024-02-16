@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod_todo_app/src/config/route/route_location.dart';
 import 'package:flutter_riverpod_todo_app/src/data/models/user.dart';
 import 'package:flutter_riverpod_todo_app/src/provider/auth/auth_provider.dart';
 import 'package:flutter_riverpod_todo_app/src/provider/date_provider.dart';
 import 'package:flutter_riverpod_todo_app/src/provider/time_provider.dart';
 import 'package:flutter_riverpod_todo_app/src/utils/app_alerts.dart';
+import 'package:flutter_riverpod_todo_app/src/utils/constants.dart';
+import 'package:flutter_riverpod_todo_app/src/utils/extensions.dart';
 import 'package:flutter_riverpod_todo_app/src/utils/helpers.dart';
 import 'package:flutter_riverpod_todo_app/src/widgets/common_text_field.dart';
 import 'package:flutter_riverpod_todo_app/src/widgets/display_black_text.dart';
 import 'package:flutter_riverpod_todo_app/src/widgets/display_white_text.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 class SignUpView extends ConsumerStatefulWidget {
@@ -29,7 +29,6 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
   @override
   void initState() {
     super.initState();
-    // final auth = ref.watch(authProvider.notifier).checkLoggedIn();
   }
 
   @override
@@ -64,7 +63,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
           ),
         ),
         const Gap(10),
-        alreadyHaveAnAccount()
+        _alreadyHaveAnAccount()
       ],
     );
   }
@@ -74,11 +73,10 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
     final password = _passwordController.text.trim();
 
     if (userName.isEmpty || password.isEmpty) {
-      AppAlerts.displaySnackbar(
-          context, 'Username and Password cannot be empty.');
+      AppAlerts.displaySnackBar(context, Constants.usernamePasswordCantEmpty);
       return;
     }
-    showHideLoading(true);
+    _showHideLoading(true);
 
     final time = ref.watch(timeProvider);
     final date = ref.watch(dateProvider);
@@ -91,14 +89,14 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
     );
 
     await ref.read(authProvider.notifier).signUp(user).then((value) {
-      showHideLoading(false);
+      _showHideLoading(false);
       if (!value) {
-        AppAlerts.displaySnackbar(context, 'Error in SignUp.');
+        AppAlerts.displaySnackBar(context, Constants.errorInSignUp);
         return;
       }
       clearTextFields();
-      AppAlerts.displaySnackbar(context, 'SignUp successfully.');
-      context.go(RouteLocation.login);
+      AppAlerts.displaySnackBar(context, Constants.signUpSuccessfully);
+      context.navigator.pop();
     });
   }
 
@@ -113,14 +111,14 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
     }
   }
 
-  Widget alreadyHaveAnAccount() {
+  Widget _alreadyHaveAnAccount() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text('Already have an account ? '),
         TextButton(
           onPressed: () {
-            context.go(RouteLocation.login);
+            context.navigator.pop();
           },
           child: const Padding(
             padding: EdgeInsets.only(top: 8, bottom: 8),
@@ -135,7 +133,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
     );
   }
 
-  void showHideLoading(bool show) {
+  void _showHideLoading(bool show) {
     setState(() {
       _loading = show;
     });

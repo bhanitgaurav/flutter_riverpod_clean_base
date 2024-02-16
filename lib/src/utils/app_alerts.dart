@@ -5,7 +5,8 @@ import 'package:flutter_riverpod_todo_app/src/utils/extensions.dart';
 class AppAlerts {
   const AppAlerts._();
 
-  static displaySnackbar(BuildContext context, String message) {
+  static displaySnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(

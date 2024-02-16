@@ -6,15 +6,8 @@ import 'package:flutter_riverpod_todo_app/src/utils/extensions.dart';
 import 'package:flutter_riverpod_todo_app/src/utils/helpers.dart';
 import 'package:flutter_riverpod_todo_app/src/widgets/app_background.dart';
 import 'package:flutter_riverpod_todo_app/src/widgets/display_white_text.dart';
-import 'package:go_router/go_router.dart';
 
 class SignUpScreen extends ConsumerWidget {
-  static SignUpScreen builder(
-    BuildContext context,
-    GoRouterState state,
-  ) =>
-      const SignUpScreen();
-
   const SignUpScreen({super.key});
 
   @override

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod_todo_app/src/config/route/my_routes.dart';
 import 'package:flutter_riverpod_todo_app/src/config/route/route_location.dart';
 import 'package:flutter_riverpod_todo_app/src/provider/auth/auth_provider.dart';
 import 'package:flutter_riverpod_todo_app/src/utils/app_alerts.dart';
+import 'package:flutter_riverpod_todo_app/src/utils/constants.dart';
+import 'package:flutter_riverpod_todo_app/src/utils/extensions.dart';
 import 'package:flutter_riverpod_todo_app/src/widgets/common_text_field.dart';
 import 'package:flutter_riverpod_todo_app/src/widgets/display_black_text.dart';
 import 'package:flutter_riverpod_todo_app/src/widgets/display_white_text.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 
 class LoginView extends ConsumerStatefulWidget {
   const LoginView({super.key});
@@ -68,8 +70,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
     final password = _passwordController.text.trim();
 
     if (userName.isEmpty || password.isEmpty) {
-      AppAlerts.displaySnackbar(
-          context, 'Username and Password cannot be empty.');
+      AppAlerts.displaySnackBar(context, Constants.usernamePasswordCantEmpty);
       return;
     }
     showHideLoading(true);
@@ -80,12 +81,13 @@ class _LoginViewState extends ConsumerState<LoginView> {
         .then((value) {
       showHideLoading(false);
       if (value.isNotEmpty) {
-        AppAlerts.displaySnackbar(context, value);
+        AppAlerts.displaySnackBar(context, value);
         return;
       }
       clearTextFields();
-      AppAlerts.displaySnackbar(context, 'LoggedIn successfully.');
-      context.go(RouteLocation.dashboard);
+      AppAlerts.displaySnackBar(context, Constants.loggedInSuccessfully);
+      context.navigator
+          .pushReplacement(MyRoute.generateRoute(RouteLocation.dashboard));
     });
   }
 
@@ -107,7 +109,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
         const Text('Not registered ? '),
         TextButton(
           onPressed: () {
-            context.go(RouteLocation.signup);
+            context.navigator.push(MyRoute.generateRoute(RouteLocation.signup));
           },
           child: const Padding(
             padding: EdgeInsets.only(top: 8, bottom: 8),

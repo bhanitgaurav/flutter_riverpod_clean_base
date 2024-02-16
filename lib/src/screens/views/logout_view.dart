@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod_todo_app/src/config/route/my_routes.dart';
 import 'package:flutter_riverpod_todo_app/src/config/route/route_location.dart';
 import 'package:flutter_riverpod_todo_app/src/provider/auth/auth_provider.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod_todo_app/src/utils/extensions.dart';
 
 class LogoutView extends ConsumerStatefulWidget {
   const LogoutView({super.key});
@@ -22,7 +23,8 @@ class _LogoutViewState extends ConsumerState<LogoutView> {
 
   void logout() {
     ref.read(authProvider.notifier).logOut().then((value) {
-      context.go(RouteLocation.login);
+      context.navigator
+          .pushReplacement(MyRoute.generateRoute(RouteLocation.login));
     });
   }
 }
