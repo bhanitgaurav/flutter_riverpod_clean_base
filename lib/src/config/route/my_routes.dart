@@ -20,18 +20,6 @@ class MyRoute {
       return MaterialPageRoute(builder: (_) => const DashboardScreen());
     }
     return _errorRoute(route);
-    // switch (route) {
-    //   case '/splash':
-    //     return MaterialPageRoute(builder: (_) => const SplashScreen());
-    //   case '/login':
-    //     return MaterialPageRoute(builder: (_) => const LoginScreen());
-    //   case '/signup':
-    //     return MaterialPageRoute(builder: (_) => const SignUpScreen());
-    //   case '/dashboard':
-    //     return MaterialPageRoute(builder: (_) => const DashboardScreen());
-    //   default:
-    //     return errorRoute(route);
-    // }
   }
 
   static MaterialPageRoute _errorRoute(String? route) {

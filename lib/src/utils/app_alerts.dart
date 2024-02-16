@@ -23,7 +23,7 @@ class AppAlerts {
 // static Future<void> showAlertDeleteDialog({
 //   required BuildContext context,
 //   required WidgetRef ref,
-//   required Task task,
+//   required User user,
 // }) async {
 //   Widget cancelButton = TextButton(
 //     child: const Text('NO'),
@@ -31,13 +31,13 @@ class AppAlerts {
 //   );
 //   Widget deleteButton = TextButton(
 //     onPressed: () async {
-//       await ref.read(tasksProvider.notifier).deleteTask(task).then(
+//       await ref.read(tasksProvider.notifier).deleteTask(user).then(
 //         (value) {
-//           displaySnackbar(
+//           displaySnackBar(
 //             context,
 //             'Task deleted successfully',
 //           );
-//           context.pop();
+//           context.navigator.pop();
 //         },
 //       );
 //     },
@@ -45,7 +45,7 @@ class AppAlerts {
 //   );
 //
 //   AlertDialog alert = AlertDialog(
-//     title: const Text('Are you sure you want to delete this task?'),
+//     title: const Text('Are you sure you want to delete this user?'),
 //     actions: [
 //       deleteButton,
 //       cancelButton,

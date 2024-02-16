@@ -38,15 +38,6 @@ class Helpers {
     }
   }
 
-  // static bool isTaskFromSelectedDate(Task task, DateTime selectedDate) {
-  //   final DateTime taskDate = _stringToDateTime(task.date);
-  //   if (taskDate.month == selectedDate.month &&
-  //       taskDate.year == selectedDate.year &&
-  //       taskDate.day == selectedDate.day) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
 
   static DateTime _stringToDateTime(String dateString) {
     try {
