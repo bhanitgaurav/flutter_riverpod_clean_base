@@ -46,11 +46,11 @@ class SplashScreen extends ConsumerWidget {
     }
     if (loggedIn) {
       Future.delayed(const Duration(seconds: 2)).then((value) {
-        context.push(RouteLocation.dashboard);
+        context.pushReplacement(RouteLocation.dashboard);
       });
     } else {
       Future.delayed(const Duration(seconds: 2)).then((value) {
-        context.push(RouteLocation.login);
+        context.pushReplacement(RouteLocation.login);
       });
     }
   }
