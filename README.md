@@ -21,10 +21,9 @@ git clone https://github.com/bhanitgaurav/flutter_riverpod_clean_base.git
 4. Launch the app on an emulator or physical device using ```flutter run```.
 
 <p align="left">
- <img width="200" alt="pixel6AMockup1" src="https://github.com/bhanitgaurav/flutter_riverpod_clean_base/assets/images/signup_view" />
+ <img width="200" alt="pixel6AMockup1" src="https://github.com/bhanitgaurav/flutter_riverpod_clean_base/assets/66617776/97c3b295-a8f6-4bd2-8a26-e2a6735ef4ee" />
 
-<img width="200" alt="pixel6AMockup2" src="https://github.com/bhanitgaurav/flutter_riverpod_clean_base/assets/images/login_view" />
+<img width="200" alt="pixel6AMockup2" src="https://github.com/bhanitgaurav/flutter_riverpod_clean_base/assets/66617776/6ffab826-0933-44a1-8b46-ccbf95b330cd" />
 
-<img width="200" alt="pixel6AMockup3" src="https://github.com/bhanitgaurav/flutter_riverpod_clean_base/assets/images/dashbaord" />
+<img width="200" alt="pixel6AMockup3" src="https://github.com/bhanitgaurav/flutter_riverpod_clean_base/assets/66617776/3aabc1ef-d005-421b-8c55-ef960a573d2c" />
 </p>
-
